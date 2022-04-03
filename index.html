@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+</head>
+<body>
+   
+    <div id="app">
+        <p>{{contador}}</p>
+        <button @click="contador++">+</button>
+        <button @click="contador--">-</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                contador: 0,
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!--<div id="app">
+        <div v-if="modal" id="mod" v-bind:style="{background: cor}">
+            <h3>Meu nome é Bruno Saturnino Alves</h3>
+            <h2>Tenho 22 anos, estudo desenvolvimento web</h2>
+            <input v-model="cor" type="color">
+        </div>
+        <br>
+        <button @click="modal = !modal">{{modal ? "Fechar" : "Abrir"}}</button>
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                modal: true,
+                cor: "#333",
+            }
+        });
+    </script>-->
+
+<!--
+
+     <div id="calculadora">
+        <h1>Calculadora Simples</h1>
+        <span>{{num1}} * {{num2}}</span>
+        <span> = {{num1 * num2}}</span>
+        <br>
+        <button @click="num1++">num1++</button>
+        <button @click="num1--">num1--</button>
+        <span>----</span>
+        <button @click="num2++">num2++</button>
+        <button @click="num2--">num2--</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#calculadora",
+            data: {
+                num1: 0,
+                num2: 0,
+                res: 0,
+            }
+        });
+    </script>
+
+
+
+    <div id="app">
+    <p>Camisa R$ {{preco}}</p>
+    <button @click="numCamisas++">Adicionar</button>
+    <button @click="numCamisas--">Remover</button>
+    <span>{{numCamisas}}</span>
+    <p>Total: {{preco * numCamisas}}</p>
+   </div>
+
+
+   <script>
+       const vm = new Vue({
+           el: "#app",
+           data: {
+               preco: 52,
+               numCamisas: 0,
+           }
+       });
+   </script>
+-->
