@@ -10,19 +10,25 @@
 <body>
    
     <div id="app">
-        <p>{{contador}}</p>
-        <button @click="contador++">+</button>
-        <button @click="contador--">-</button>
+        <div v-if="modal" v-bind:style="{background: cor}">
+            <p>Nome: Bruno Saturnino Alves</p>
+            <P>Idade: 22</P>
+            <p>Graduação: Ciências da Computação</p>
+            <input v-model="cor" type="color">
+        </div>
+        <button @click="modal = !modal">{{modal ? "Fechar" : "Abrir"}}</button>
     </div>
 
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
-                contador: 0,
+                modal: true,
+                cor: "#fff",
             }
         });
     </script>
+
 </body>
 </html>
 
