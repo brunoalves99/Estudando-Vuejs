@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Vue.js</title>
+    <style>
+        .verde {
+            color: green;
+        }
+
+        .vermelho {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app">
+        <button @click="comparar">Comparar</button>
+        <p v-bind:class="MoreCap ? verde : vermelho">CompanyName: {{appleCompanyName}}</p>
+        <p>Marketcap: {{appleMarketCap / 1000}}</p>
+        <p v-bind:class="MoreCap ? vermelho : verde">CompanyName: {{googleCompanyName}}</p>
+        <p>Marketcap: {{googleMarketCap / 1000}}</p>
+        
+    </div>
+
+    <script>
+        const vm = new Vue({
+          el: '#app',
+          data: {
+              appleMarketCap: '',
+              appleCompanyName: '',
+              googleMarketCap: '',
+              googleCompanyName: '',
+              MoreCap: '',
+              verde: '',
+              vermelho: '',
+              //apple: {},
+              //google: {}
+          },
+          methods: {
+            comparar() {
+                  fetch('https://api.origamid.dev/stock/aapl/quote')
+                  .then(response => response.json())
+                  .then(json => {
+                    console.log(json);
+                    //this.apple = json;
+                    this.appleMarketCap = json.marketCap;
+                    this.appleCompanyName = json.companyName;
+                   });
+
+                   fetch('https://api.origamid.dev/stock/googl/quote')
+                  .then(response => response.json())
+                  .then(json => {
+                    console.log(json);
+                    //this.google = json;
+                    this.googleMarketCap = json.marketCap;
+                    this.googleCompanyName = json.companyName;
+                   });
+
+                   this.MoreCap = this.appleMarketCap > this.googleMarketCap;
+                   this.verde = 'verde';
+                   this.vermelho = 'vermelho';
+                }
+          }
+        });
+    </script>
+
+</body>
+</html>
