@@ -10,24 +10,35 @@
 <body>
 
     <div id="app">
-
-        <input @keyup.esc="ativar" type="text" name="" id="" />
-
+        <p style="position: fixed">{{totalScroll * 20}}</p>
     </div>
 
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
-
+                totalScroll: 0,
             },
             methods: {
-                ativar() {
-                    console.log('ativou');
+                handleScroll(event) {
+                    console.log(event);
+                    if(event.key === 'Enter') {
+                        this.totalScroll = window.scrollY;
+                        // console.log(this.totalScroll);
+                    }
+                    
                 }
+            },
+            created() {
+                window.addEventListener('keyup', this.handleScroll);
             }
         });
     </script>
 
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
 </body>
 </html>
